@@ -25,7 +25,7 @@ describe Account do
     it 'should decrease the value of the balance by the quantity given as argument
     in the withdraw method' do
       subject.deposit(STANDARD_DEPOSIT)
-      subject.withdraw(STANDARD_DEPOSIT)
+      subject.withdraw(STANDARD_WITHDRAWAL)
       expect(subject.balance).to eq 0
     end
   end
