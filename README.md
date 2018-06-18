@@ -17,7 +17,10 @@ my balance to increase by the correct amount after making a deposit.
 As a customer, to ensure that I do not have more funds than is correct i want
 my balance to decrease by the correct amount after making a withdrawal.
 
-As an account manager, so that I can keep track of my transaction history I
-would like a record of my deposits to be stored with a time stamp.
+As an account manager, so that I can keep track of an account transaction
+history I would like a record of deposits to be stored with a date stamp.
+
+As an account manager, so that I can keep track of an account transaction
+history I would like a record of withdrawals to be stored with a date stamp.
 
 ```
