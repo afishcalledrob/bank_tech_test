@@ -6,31 +6,19 @@ describe Transaction do
   let(:balance) { 0 }
 
   it 'should contain an empty hash for its initial withdrawal history' do
-    expect(subject.withdrawal_history).to eq({})
-  end
-
-  it 'should store withdrawals in a hash' do
-    subject.add_withdrawal(STANDARD_WITHDRAWAL, date)
-    expect(subject.withdrawal_history).to include STANDARD_WITHDRAWAL
+    expect(subject.history).to eq([])
   end
 
   it 'should store date associated with withdrawal in hash' do
-    subject.add_withdrawal(STANDARD_WITHDRAWAL, date)
-    expect(subject.withdrawal_history[STANDARD_WITHDRAWAL]).to eq('19/06/2018')
+    subject.add_transaction(date, 0, STANDARD_WITHDRAWAL, balance)
+    expect(subject.history[0][:date]).to eq('19/06/2018')
   end
 
-  it 'should contain an empty hash for its initial deposit history' do
-    expect(subject.deposit_history).to eq({})
-  end
 
-  it 'should store deposits in a hash' do
-    subject.add_deposit(STANDARD_DEPOSIT, date)
-    expect(subject.deposit_history).to include STANDARD_DEPOSIT
-  end
 
   it 'should store date associated with deposit in hash' do
-    subject.add_deposit(STANDARD_DEPOSIT, date)
-    expect(subject.deposit_history[STANDARD_DEPOSIT]).to eq('19/06/2018')
+    subject.add_transaction(date, STANDARD_DEPOSIT, 0, balance)
+    expect(subject.history[0][:credit]).to eq(STANDARD_DEPOSIT)
   end
 
 

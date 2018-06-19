@@ -36,13 +36,13 @@ describe Account do
     it 'should call the add_deposit method on transactions when deposit is
     called on amount' do
       subject.deposit(STANDARD_DEPOSIT)
-      expect(transactions).to have_received(:add_deposit)
+      expect(transactions).to have_received(:add_transaction)
     end
 
     it 'should call the add_withdrawal method on transactions when withdrawal is
     called on amount' do
       subject.withdraw(STANDARD_WITHDRAWAL)
-      expect(transactions).to have_received(:add_withdrawal)
+      expect(transactions).to have_received(:add_transaction)
     end
   end
 
