@@ -6,11 +6,11 @@ class Transaction
     @deposit_history = {}
   end
 
-  def add_withdrawal(amount)
-    @withdrawal_history[amount] = Time.now.strftime("%d/%m/%Y")
+  def add_withdrawal(amount, date)
+    @withdrawal_history[amount] = date
   end
 
-  def add_deposit(amount)
-    @deposit_history[amount] = Time.now.strftime("%d/%m/%Y")
+  def add_deposit(amount, date)
+    @deposit_history[amount] = date
   end
 end

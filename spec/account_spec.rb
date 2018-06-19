@@ -3,6 +3,8 @@ STANDARD_DEPOSIT = 10
 STANDARD_WITHDRAWAL = 10
 
 describe Account do
+  let(:subject) { Account.new(transactions) }
+  let(:transactions) { spy :transactions }
   context '#altering_the_balance' do
     it 'should respond to the method deposit with 1 argument' do
       expect(subject).to respond_to(:deposit).with(1).argument
@@ -30,16 +32,19 @@ describe Account do
     end
   end
 
-  context '#examining_history' do
-    it 'should be able to return a hash of deposits' do
+  context '#transaction_history' do
+    it 'should call the add_deposit method on transactions when deposit is
+    called on amount' do
       subject.deposit(STANDARD_DEPOSIT)
-      expect(subject.transactions.deposit_history).to include STANDARD_DEPOSIT
+      expect(transactions).to have_received(:add_deposit)
     end
 
-    it 'should be able to return a hash of withdrawals' do
-      subject.deposit(STANDARD_DEPOSIT)
+    it 'should call the add_withdrawal method on transactions when withdrawal is
+    called on amount' do
       subject.withdraw(STANDARD_WITHDRAWAL)
-      expect(subject.transactions.withdrawal_history).to include STANDARD_WITHDRAWAL
+      expect(transactions).to have_received(:add_withdrawal)
     end
   end
+
+
 end
