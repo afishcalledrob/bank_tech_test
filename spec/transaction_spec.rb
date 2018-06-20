@@ -5,7 +5,7 @@ describe Transaction do
   let(:date) { '19/06/2018' }
   let(:balance) { 0 }
 
-  it 'should contain an empty hash for its initial withdrawal history' do
+  it 'should contain an empty array for its initial history' do
     expect(subject.history).to eq([])
   end
 

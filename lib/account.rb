@@ -1,12 +1,12 @@
-require 'transaction'
-require 'statement'
+require_relative 'transaction'
+require_relative 'statement'
 class Account
   attr_reader :balance, :transactions, :statement
 
     def initialize(transactions = Transaction.new, statement = Statement.new)
       @balance = 0
       @transactions = transactions
-      @statment = statement
+      @statement = statement
     end
 
     def deposit(amount)

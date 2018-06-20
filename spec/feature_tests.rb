@@ -1,12 +1,54 @@
-context '#examining_history' do
-  it 'should be able to return a hash of deposits' do
-    subject.deposit(STANDARD_DEPOSIT)
-    expect(subject.transactions.deposit_history).to include STANDARD_DEPOSIT
-  end
+require_relative '../lib/account.rb'
+require_relative '../lib/statement.rb'
+require_relative '../lib/transaction.rb'
 
-  it 'should be able to return a hash of withdrawals' do
-    subject.deposit(STANDARD_DEPOSIT)
-    subject.withdraw(STANDARD_WITHDRAWAL)
-    expect(subject.transactions.withdrawal_history).to include STANDARD_WITHDRAWAL
-  end
+def test_deposit
+  account = Account.new
+  account.deposit(10)
+end
+
+def test_withdrawal
+  account = Account.new
+  account.deposit(10)
+  account.withdraw(5)
+end
+
+def test_balance
+  account = Account.new
+  account.deposit(35)
+  account.balance
+end
+
+def test_statement
+  account = Account.new
+  account.deposit(100)
+  account.withdraw(50)
+  account.deposit(25)
+  account.print_statement
+end
+
+
+def test_deposit
+  account = Account.new
+  account.deposit(10)
+end
+
+def test_withdrawal
+  account = Account.new
+  account.deposit(10)
+  account.withdraw(5)
+end
+
+def test_balance
+  account = Account.new
+  account.deposit(35)
+  account.balance
+end
+
+def test_statement
+  account = Account.new
+  account.deposit(100)
+  account.withdraw(50)
+  account.deposit(25)
+  account.print_statement
 end

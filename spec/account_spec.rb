@@ -3,8 +3,9 @@ STANDARD_DEPOSIT = 10
 STANDARD_WITHDRAWAL = 10
 
 describe Account do
-  let(:subject) { Account.new(transactions) }
+  let(:subject) { Account.new(transactions, statement) }
   let(:transactions) { spy :transactions }
+  let(:statement) { spy :statement }
   context '#altering_the_balance' do
     it 'should respond to the method deposit with 1 argument' do
       expect(subject).to respond_to(:deposit).with(1).argument
@@ -33,16 +34,24 @@ describe Account do
   end
 
   context '#transaction_history' do
-    it 'should call the add_deposit method on transactions when deposit is
+    it 'should call the add_transaction method on transactions when deposit is
     called on amount' do
       subject.deposit(STANDARD_DEPOSIT)
       expect(transactions).to have_received(:add_transaction)
     end
 
-    it 'should call the add_withdrawal method on transactions when withdrawal is
+    it 'should call the add_transaction method on transactions when withdrawal is
     called on amount' do
       subject.withdraw(STANDARD_WITHDRAWAL)
       expect(transactions).to have_received(:add_transaction)
+    end
+  end
+
+  context '#printing statement' do
+    it 'should call the pretty_print method on statement when print_statement is
+    called on account' do
+      subject.print_statement
+      expect(statement).to have_received(:pretty_print)
     end
   end
 
