@@ -13,8 +13,8 @@ class Account
       if amount < 0
         raise 'Cannot deposit a negative amount'
       else
-      @balance += amount
-      @transactions.add_transaction(Time.now.strftime("%d/%m/%Y"), amount, 0, @balance)
+       @balance += amount
+       @transactions.add_transaction(Time.now.strftime("%d/%m/%Y"), amount, 0, @balance)
      end
     end
 
@@ -22,8 +22,8 @@ class Account
       if amount > @balance
         raise 'Insufficient funds'
       else
-      @balance -= amount
-      @transactions.add_transaction(Time.now.strftime("%d/%m/%Y"), 0, amount, @balance)
+       @balance -= amount
+       @transactions.add_transaction(Time.now.strftime("%d/%m/%Y"), 0, amount, @balance)
      end
     end
 
