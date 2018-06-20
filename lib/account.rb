@@ -24,7 +24,7 @@ class Account
       else
       @balance -= amount
       @transactions.add_transaction(Time.now.strftime("%d/%m/%Y"), 0, amount, @balance)
-    end
+     end
     end
 
     def print_statement
