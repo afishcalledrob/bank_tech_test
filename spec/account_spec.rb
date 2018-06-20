@@ -31,6 +31,14 @@ describe Account do
       subject.withdraw(STANDARD_WITHDRAWAL)
       expect(subject.balance).to eq 0
     end
+
+   it 'should be unbable to deposit a negative amount' do
+     expect { subject.deposit(-1) }.to raise_error('Cannot deposit a negative amount')
+   end
+
+   it 'should be unable to withdraw an amount greater than balance' do
+     expect { subject.withdraw(STANDARD_WITHDRAWAL) }.to raise_error('Insufficient funds')
+   end
   end
 
   context '#transaction_history' do
@@ -42,8 +50,9 @@ describe Account do
 
     it 'should call the add_transaction method on transactions when withdrawal is
     called on amount' do
+      subject.deposit(STANDARD_DEPOSIT)
       subject.withdraw(STANDARD_WITHDRAWAL)
-      expect(transactions).to have_received(:add_transaction)
+      expect(transactions).to have_received(:add_transaction).twice
     end
   end
 
